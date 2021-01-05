@@ -1,0 +1,15 @@
+language: node_js
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - npm run db:init
+env:
+  global:
+    - SQL_USERNAME=postgres
+    - SQL_TEST_DATABASE=travis_ci_test
+    - NODE_ENV=test
+deploy:
+  provider: heroku
+  api_key:
+    secure: Ig4vTJS/NcqiCu1SO8bxWK4TSUwglN/CAMJNge/8KS94WmOul9vgPgwMU5zJQ6KxpJ7wou9cQtFNbuNlBJ0cROJDGJa171c6zdwa9mMUkU+aJ+UEaZe/TuDE3/fVE1+Io7eLP3qh6wciq4aW7wsDZOb3bI2UkdjZmpMFwL4IgKEXvmTzKwe0wPflRBGV9QVbZ4bHMuvYzQGK+Pzgdbs8bI5njx9NyT2R+n/dH7XwOI5T0gLMfWmgv5pUsqV3jTipHbb7SnKy/zgjz8Rg7ESAxV4yEDTilLOuC3sIAelkKrrve9n/tiKF3TiBFETRVvYmiHZanf3d2XLww7Cm9SyUwlHptFIkI7AcOstV4xMkGIJqJuZptOHfdGKZy6r64Dx1GZSw8xEcCw6Qdx492a498sYchusL8rJf4mtqPAJxRVqGQipTKP6t29kobxCEyt1vmuGUWuubu1q6yURKLf+euAAet0WS8QrShMemzQReAWbyg1T9K30pSEmCUV2KYjGOSGkb1ppn5dJNjgIM5BVzt7FxhgNz4NDXb+g1veO74C3z4Zv/u1ThcSDKNshitX9KrlXOyIPlDpDsyPpiyk2FNgQkeQvxknjO4wdPYsy7qTDDRpBJiuPkV46kKB9C9uVnsyC3ypU5+zPniNtdR66qpS/odBx0BmMLT/A5dPrGRqM=
