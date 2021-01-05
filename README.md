@@ -67,6 +67,8 @@ npm test
 npm test:watch
 ```
 
+### Terminé
+
 ### Base de datos
 
 ```shell
